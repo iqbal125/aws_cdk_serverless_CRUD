@@ -6,6 +6,8 @@ import lambda = require("@aws-cdk/aws-lambda")
 export class AwsCdkServerlessCrudStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props)
+
+    // The code that defines your stack goes here
     const dynamoTable = new dynamodb.Table(this, "items", {
       partitionKey: {
         name: "itemId",
@@ -85,7 +87,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
 
     const createOneIntegration = new apigateway.LambdaIntegration(createOne)
     items.addMethod("POST", createOneIntegration)
-    addCorsOptions(items)
+    //addCorsOptions(items)
 
     const singleItem = items.addResource("{id}")
     const getOneIntegration = new apigateway.LambdaIntegration(getOneLambda)
@@ -96,7 +98,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
 
     const deleteOneIntegration = new apigateway.LambdaIntegration(deleteOne)
     singleItem.addMethod("DELETE", deleteOneIntegration)
-    addCorsOptions(singleItem)
+    //addCorsOptions(singleItem)
   }
 }
 
