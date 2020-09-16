@@ -22,7 +22,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const getOneLambda = new lambda.Function(this, "getOneItemFunction", {
-      code: new lambda.AssetCode("src"),
+      code: lambda.Code.fromAsset("src"),
       handler: "get-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
@@ -32,7 +32,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const getAllLambda = new lambda.Function(this, "getAllItemsFunction", {
-      code: new lambda.AssetCode("src"),
+      code: lambda.Code.fromAsset("src"),
       handler: "get-all.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
@@ -42,7 +42,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const createOne = new lambda.Function(this, "createItemFunction", {
-      code: new lambda.AssetCode("src"),
+      code: lambda.Code.fromAsset("src"),
       handler: "create.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
@@ -52,7 +52,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const updateOne = new lambda.Function(this, "updateItemFunction", {
-      code: new lambda.AssetCode("src"),
+      code: lambda.Code.fromAsset("src"),
       handler: "update-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
@@ -62,7 +62,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const deleteOne = new lambda.Function(this, "deleteItemFunction", {
-      code: new lambda.AssetCode("src"),
+      code: lambda.Code.fromAsset("src"),
       handler: "delete-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
