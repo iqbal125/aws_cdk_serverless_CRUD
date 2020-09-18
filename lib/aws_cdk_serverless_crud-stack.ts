@@ -22,26 +22,6 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY, // NOT recommended for production code
     })
 
-    const getOneLambda = new lambda.Function(this, "getOneItemFunction", {
-      code: lambda.Code.fromAsset("Lambda.zip"),
-      handler: "Lambda.get-one.get-one.handler",
-      runtime: lambda.Runtime.NODEJS_10_X,
-      environment: {
-        TABLE_NAME: dynamoTable.tableName,
-        PRIMARY_KEY: "itemId",
-      },
-    })
-
-    const getAllLambda = new lambda.Function(this, "getAllItemsFunction", {
-      code: lambda.Code.fromAsset("Lambda.zip"),
-      handler: "Lambda.get-all.get-all.handler",
-      runtime: lambda.Runtime.NODEJS_10_X,
-      environment: {
-        TABLE_NAME: dynamoTable.tableName,
-        PRIMARY_KEY: "itemId",
-      },
-    })
-
     //const createOne = new lambdaNode.NodejsFunction(this, "createItemFunction", {
     //  entry: "Lambda/create2/create.js",
     //  handler: "handler",
@@ -58,9 +38,29 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       },
     })
 
+    const getOneLambda = new lambda.Function(this, "getOneItemFunction", {
+      code: lambda.Code.fromAsset("LambdaBuilt/get-one.zip"),
+      handler: "get-one.handler",
+      runtime: lambda.Runtime.NODEJS_10_X,
+      environment: {
+        TABLE_NAME: dynamoTable.tableName,
+        PRIMARY_KEY: "itemId",
+      },
+    })
+
+    const getAllLambda = new lambda.Function(this, "getAllItemsFunction", {
+      code: lambda.Code.fromAsset("LambdaBuilt/get-all.zip"),
+      handler: "get-all.handler",
+      runtime: lambda.Runtime.NODEJS_10_X,
+      environment: {
+        TABLE_NAME: dynamoTable.tableName,
+        PRIMARY_KEY: "itemId",
+      },
+    })
+
     const updateOne = new lambda.Function(this, "updateItemFunction", {
-      code: lambda.Code.fromAsset("Lambda.zip"),
-      handler: "Lambda.update-one.update-one.handler",
+      code: lambda.Code.fromAsset("LambdaBuilt/update-one.zip"),
+      handler: "update-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
@@ -69,8 +69,8 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const deleteOne = new lambda.Function(this, "deleteItemFunction", {
-      code: lambda.Code.fromAsset("Lambda.zip"),
-      handler: "Lambda.delete.delete-one.handler",
+      code: lambda.Code.fromAsset("LambdaBuitl/delete-one.zip"),
+      handler: "delete-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
