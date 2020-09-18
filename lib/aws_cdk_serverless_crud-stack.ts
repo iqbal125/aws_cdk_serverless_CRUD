@@ -2,6 +2,7 @@ import * as cdk from "@aws-cdk/core"
 import apigateway = require("@aws-cdk/aws-apigateway")
 import dynamodb = require("@aws-cdk/aws-dynamodb")
 import lambda = require("@aws-cdk/aws-lambda")
+import lambdaNode = require("@aws-cdk/aws-lambda-nodejs")
 
 export class AwsCdkServerlessCrudStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -22,8 +23,8 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const getOneLambda = new lambda.Function(this, "getOneItemFunction", {
-      code: lambda.Code.fromAsset("Lambda/get-one"),
-      handler: "get-one.handler",
+      code: lambda.Code.fromAsset("Lambda.zip"),
+      handler: "Lambda.get-one.get-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
@@ -32,8 +33,8 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const getAllLambda = new lambda.Function(this, "getAllItemsFunction", {
-      code: lambda.Code.fromAsset("Lambda/get-all"),
-      handler: "get-all.handler",
+      code: lambda.Code.fromAsset("Lambda.zip"),
+      handler: "Lambda.get-all.get-all.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
@@ -41,9 +42,15 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       },
     })
 
+    //const createOne = new lambdaNode.NodejsFunction(this, "createItemFunction", {
+    //  entry: "Lambda/create2/create.js",
+    //  handler: "handler",
+    //  externalModules: ["aws-sdk", "uuidv4"],
+    //})
+
     const createOne = new lambda.Function(this, "createItemFunction", {
-      code: lambda.Code.fromAsset("Lambda/create"),
-      handler: "create.handler",
+      code: lambda.Code.fromAsset("create3.zip"),
+      handler: "create3.index.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
@@ -52,8 +59,8 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const updateOne = new lambda.Function(this, "updateItemFunction", {
-      code: lambda.Code.fromAsset("Lambda/update-one"),
-      handler: "update-one.handler",
+      code: lambda.Code.fromAsset("Lambda.zip"),
+      handler: "Lambda.update-one.update-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
@@ -62,8 +69,8 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const deleteOne = new lambda.Function(this, "deleteItemFunction", {
-      code: lambda.Code.fromAsset("Lambda/delete"),
-      handler: "delete-one.handler",
+      code: lambda.Code.fromAsset("Lambda.zip"),
+      handler: "Lambda.delete.delete-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,

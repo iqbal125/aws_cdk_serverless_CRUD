@@ -67,7 +67,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParameters31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07deS3Bucket1B5EE5E7
+          Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3BucketA97E3920
         S3Key:
           Fn::Join:
             - ""
@@ -75,13 +75,13 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07deS3VersionKeyD68D5B7E
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07deS3VersionKeyD68D5B7E
-      Handler: get-one.handler
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
+      Handler: Lambda.get-one.get-one.handler
       Role:
         Fn::GetAtt:
           - getOneItemFunctionServiceRoleCFD54796
@@ -97,7 +97,7 @@ Resources:
       - getOneItemFunctionServiceRoleCFD54796
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/getOneItemFunction/Resource
-      aws:asset:path: C:\Users\iqbal\Desktop\Code\aws_cdk_serverless_CRUD\aws_cdk_serverless_CRUD\src\get-one
+      aws:asset:path: asset.236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606.zip
       aws:asset:property: Code
   getAllItemsFunctionServiceRoleCC084440:
     Type: AWS::IAM::Role
@@ -150,7 +150,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParametersef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661S3BucketF5585770
+          Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3BucketA97E3920
         S3Key:
           Fn::Join:
             - ""
@@ -158,13 +158,13 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661S3VersionKeyC369CE6D
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661S3VersionKeyC369CE6D
-      Handler: get-all.handler
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
+      Handler: Lambda.get-all.get-all.handler
       Role:
         Fn::GetAtt:
           - getAllItemsFunctionServiceRoleCC084440
@@ -180,7 +180,7 @@ Resources:
       - getAllItemsFunctionServiceRoleCC084440
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/getAllItemsFunction/Resource
-      aws:asset:path: C:\Users\iqbal\Desktop\Code\aws_cdk_serverless_CRUD\aws_cdk_serverless_CRUD\src\get-all
+      aws:asset:path: asset.236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606.zip
       aws:asset:property: Code
   createItemFunctionServiceRole1BBF2178:
     Type: AWS::IAM::Role
@@ -233,7 +233,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParameters6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14eS3BucketDDB1A960
+          Ref: AssetParameterse3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37aS3Bucket2712E5DC
         S3Key:
           Fn::Join:
             - ""
@@ -241,13 +241,13 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14eS3VersionKey5DFE58BB
+                      - Ref: AssetParameterse3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37aS3VersionKeyE9A98F79
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14eS3VersionKey5DFE58BB
-      Handler: create.handler
+                      - Ref: AssetParameterse3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37aS3VersionKeyE9A98F79
+      Handler: create3.index.handler
       Role:
         Fn::GetAtt:
           - createItemFunctionServiceRole1BBF2178
@@ -263,7 +263,7 @@ Resources:
       - createItemFunctionServiceRole1BBF2178
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/createItemFunction/Resource
-      aws:asset:path: C:\Users\iqbal\Desktop\Code\aws_cdk_serverless_CRUD\aws_cdk_serverless_CRUD\src\create
+      aws:asset:path: asset.e3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37a.zip
       aws:asset:property: Code
   updateItemFunctionServiceRole40035396:
     Type: AWS::IAM::Role
@@ -316,7 +316,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParametersae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51S3BucketBE4D1183
+          Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3BucketA97E3920
         S3Key:
           Fn::Join:
             - ""
@@ -324,13 +324,13 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51S3VersionKey0E0D728B
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51S3VersionKey0E0D728B
-      Handler: update-one.handler
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
+      Handler: Lambda.update-one.update-one.handler
       Role:
         Fn::GetAtt:
           - updateItemFunctionServiceRole40035396
@@ -346,7 +346,7 @@ Resources:
       - updateItemFunctionServiceRole40035396
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/updateItemFunction/Resource
-      aws:asset:path: C:\Users\iqbal\Desktop\Code\aws_cdk_serverless_CRUD\aws_cdk_serverless_CRUD\src\update-one
+      aws:asset:path: asset.236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606.zip
       aws:asset:property: Code
   deleteItemFunctionServiceRole5C201FCC:
     Type: AWS::IAM::Role
@@ -399,7 +399,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParametersefb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ceS3Bucket65B9D164
+          Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3BucketA97E3920
         S3Key:
           Fn::Join:
             - ""
@@ -407,13 +407,13 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersefb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ceS3VersionKey94DC06DC
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParametersefb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ceS3VersionKey94DC06DC
-      Handler: delete-one.handler
+                      - Ref: AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25
+      Handler: Lambda.delete.delete-one.handler
       Role:
         Fn::GetAtt:
           - deleteItemFunctionServiceRole5C201FCC
@@ -429,7 +429,7 @@ Resources:
       - deleteItemFunctionServiceRole5C201FCC
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/deleteItemFunction/Resource
-      aws:asset:path: C:\Users\iqbal\Desktop\Code\aws_cdk_serverless_CRUD\aws_cdk_serverless_CRUD\src\delete
+      aws:asset:path: asset.236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606.zip
       aws:asset:property: Code
   itemsApi28111E1C:
     Type: AWS::ApiGateway::RestApi
@@ -890,51 +890,24 @@ Resources:
       Modules: aws-cdk=1.63.0,@aws-cdk/assets=1.63.0,@aws-cdk/aws-apigateway=1.63.0,@aws-cdk/aws-applicationautoscaling=1.63.0,@aws-cdk/aws-autoscaling-common=1.63.0,@aws-cdk/aws-cloudwatch=1.63.0,@aws-cdk/aws-codeguruprofiler=1.63.0,@aws-cdk/aws-dynamodb=1.63.0,@aws-cdk/aws-ec2=1.63.0,@aws-cdk/aws-events=1.63.0,@aws-cdk/aws-iam=1.63.0,@aws-cdk/aws-kms=1.63.0,@aws-cdk/aws-lambda=1.63.0,@aws-cdk/aws-logs=1.63.0,@aws-cdk/aws-s3=1.63.0,@aws-cdk/aws-s3-assets=1.63.0,@aws-cdk/aws-sqs=1.63.0,@aws-cdk/aws-ssm=1.63.0,@aws-cdk/cloud-assembly-schema=1.63.0,@aws-cdk/core=1.63.0,@aws-cdk/custom-resources=1.63.0,@aws-cdk/cx-api=1.63.0,@aws-cdk/region-info=1.63.0,jsii-runtime=node.js/v12.15.0
     Condition: CDKMetadataAvailable
 Parameters:
-  AssetParameters31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07deS3Bucket1B5EE5E7:
+  AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3BucketA97E3920:
     Type: String
-    Description: S3 bucket for asset "31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07de"
-  AssetParameters31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07deS3VersionKeyD68D5B7E:
+    Description: S3 bucket for asset "236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606"
+  AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606S3VersionKey4BB8AA25:
     Type: String
-    Description: S3 key for asset version "31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07de"
-  AssetParameters31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07deArtifactHash019018C1:
+    Description: S3 key for asset version "236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606"
+  AssetParameters236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606ArtifactHash86D3F130:
     Type: String
-    Description: Artifact hash for asset "31171866b3879daa65eb1cf1b6941bd94e314eb535d69062afd69a29929c07de"
-  AssetParametersef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661S3BucketF5585770:
+    Description: Artifact hash for asset "236ef0995a4a1da1bba6682197890cffe16990907a645bbcb5fb9c52e3ae8606"
+  AssetParameterse3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37aS3Bucket2712E5DC:
     Type: String
-    Description: S3 bucket for asset "ef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661"
-  AssetParametersef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661S3VersionKeyC369CE6D:
+    Description: S3 bucket for asset "e3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37a"
+  AssetParameterse3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37aS3VersionKeyE9A98F79:
     Type: String
-    Description: S3 key for asset version "ef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661"
-  AssetParametersef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661ArtifactHash198466D7:
+    Description: S3 key for asset version "e3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37a"
+  AssetParameterse3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37aArtifactHash583A0BE5:
     Type: String
-    Description: Artifact hash for asset "ef5b2731758148e10546ad8d72ec0e8adb899a5a3914b314f5543af44ad06661"
-  AssetParameters6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14eS3BucketDDB1A960:
-    Type: String
-    Description: S3 bucket for asset "6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14e"
-  AssetParameters6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14eS3VersionKey5DFE58BB:
-    Type: String
-    Description: S3 key for asset version "6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14e"
-  AssetParameters6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14eArtifactHash7E1A9F3E:
-    Type: String
-    Description: Artifact hash for asset "6964abf42d5cea73aed317dcde1c8e1e1a92f220452fa2450b8a98351f1fa14e"
-  AssetParametersae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51S3BucketBE4D1183:
-    Type: String
-    Description: S3 bucket for asset "ae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51"
-  AssetParametersae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51S3VersionKey0E0D728B:
-    Type: String
-    Description: S3 key for asset version "ae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51"
-  AssetParametersae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51ArtifactHashD3D9D387:
-    Type: String
-    Description: Artifact hash for asset "ae737eb72b56e8bdfa16508feec7436e5d16d8b7e3f2a22d0a276a8f367e8d51"
-  AssetParametersefb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ceS3Bucket65B9D164:
-    Type: String
-    Description: S3 bucket for asset "efb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ce"
-  AssetParametersefb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ceS3VersionKey94DC06DC:
-    Type: String
-    Description: S3 key for asset version "efb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ce"
-  AssetParametersefb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ceArtifactHashA0D9B180:
-    Type: String
-    Description: Artifact hash for asset "efb3c6b856fc2de69ece58d9d767c638a1c3bac81be9b64f1b3d246e1faa56ce"
+    Description: Artifact hash for asset "e3c35581c459510109984cfd450acc2b5122cf4afb02a7372767da474c4cc37a"
 Outputs:
   itemsApiEndpoint8392E274:
     Value:
