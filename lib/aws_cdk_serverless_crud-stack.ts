@@ -69,7 +69,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     })
 
     const deleteOne = new lambda.Function(this, "deleteItemFunction", {
-      code: lambda.Code.fromAsset("LambdaBuitl/delete-one.zip"),
+      code: lambda.Code.fromAsset("LambdaBuilt/delete-one.zip"),
       handler: "delete-one.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {

@@ -16,172 +16,6 @@ Resources:
     DeletionPolicy: Delete
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/items/Resource
-  getOneItemFunctionServiceRoleCFD54796:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Statement:
-          - Action: sts:AssumeRole
-            Effect: Allow
-            Principal:
-              Service: lambda.amazonaws.com
-        Version: "2012-10-17"
-      ManagedPolicyArns:
-        - Fn::Join:
-            - ""
-            - - "arn:"
-              - Ref: AWS::Partition
-              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-    Metadata:
-      aws:cdk:path: AwsCdkServerlessCrudStack/getOneItemFunction/ServiceRole/Resource
-  getOneItemFunctionServiceRoleDefaultPolicy6B743AA8:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyDocument:
-        Statement:
-          - Action:
-              - dynamodb:BatchGetItem
-              - dynamodb:GetRecords
-              - dynamodb:GetShardIterator
-              - dynamodb:Query
-              - dynamodb:GetItem
-              - dynamodb:Scan
-              - dynamodb:BatchWriteItem
-              - dynamodb:PutItem
-              - dynamodb:UpdateItem
-              - dynamodb:DeleteItem
-            Effect: Allow
-            Resource:
-              - Fn::GetAtt:
-                  - items07D08F4B
-                  - Arn
-              - Ref: AWS::NoValue
-        Version: "2012-10-17"
-      PolicyName: getOneItemFunctionServiceRoleDefaultPolicy6B743AA8
-      Roles:
-        - Ref: getOneItemFunctionServiceRoleCFD54796
-    Metadata:
-      aws:cdk:path: AwsCdkServerlessCrudStack/getOneItemFunction/ServiceRole/DefaultPolicy/Resource
-  getOneItemFunctionE3257B22:
-    Type: AWS::Lambda::Function
-    Properties:
-      Code:
-        S3Bucket:
-          Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3Bucket78B892AE
-        S3Key:
-          Fn::Join:
-            - ""
-            - - Fn::Select:
-                  - 0
-                  - Fn::Split:
-                      - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
-              - Fn::Select:
-                  - 1
-                  - Fn::Split:
-                      - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
-      Handler: Lambda.get-one.get-one.handler
-      Role:
-        Fn::GetAtt:
-          - getOneItemFunctionServiceRoleCFD54796
-          - Arn
-      Runtime: nodejs10.x
-      Environment:
-        Variables:
-          TABLE_NAME:
-            Ref: items07D08F4B
-          PRIMARY_KEY: itemId
-    DependsOn:
-      - getOneItemFunctionServiceRoleDefaultPolicy6B743AA8
-      - getOneItemFunctionServiceRoleCFD54796
-    Metadata:
-      aws:cdk:path: AwsCdkServerlessCrudStack/getOneItemFunction/Resource
-      aws:asset:path: asset.2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cb.zip
-      aws:asset:property: Code
-  getAllItemsFunctionServiceRoleCC084440:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Statement:
-          - Action: sts:AssumeRole
-            Effect: Allow
-            Principal:
-              Service: lambda.amazonaws.com
-        Version: "2012-10-17"
-      ManagedPolicyArns:
-        - Fn::Join:
-            - ""
-            - - "arn:"
-              - Ref: AWS::Partition
-              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-    Metadata:
-      aws:cdk:path: AwsCdkServerlessCrudStack/getAllItemsFunction/ServiceRole/Resource
-  getAllItemsFunctionServiceRoleDefaultPolicyF069C759:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyDocument:
-        Statement:
-          - Action:
-              - dynamodb:BatchGetItem
-              - dynamodb:GetRecords
-              - dynamodb:GetShardIterator
-              - dynamodb:Query
-              - dynamodb:GetItem
-              - dynamodb:Scan
-              - dynamodb:BatchWriteItem
-              - dynamodb:PutItem
-              - dynamodb:UpdateItem
-              - dynamodb:DeleteItem
-            Effect: Allow
-            Resource:
-              - Fn::GetAtt:
-                  - items07D08F4B
-                  - Arn
-              - Ref: AWS::NoValue
-        Version: "2012-10-17"
-      PolicyName: getAllItemsFunctionServiceRoleDefaultPolicyF069C759
-      Roles:
-        - Ref: getAllItemsFunctionServiceRoleCC084440
-    Metadata:
-      aws:cdk:path: AwsCdkServerlessCrudStack/getAllItemsFunction/ServiceRole/DefaultPolicy/Resource
-  getAllItemsFunction0B7A913E:
-    Type: AWS::Lambda::Function
-    Properties:
-      Code:
-        S3Bucket:
-          Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3Bucket78B892AE
-        S3Key:
-          Fn::Join:
-            - ""
-            - - Fn::Select:
-                  - 0
-                  - Fn::Split:
-                      - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
-              - Fn::Select:
-                  - 1
-                  - Fn::Split:
-                      - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
-      Handler: Lambda.get-all.get-all.handler
-      Role:
-        Fn::GetAtt:
-          - getAllItemsFunctionServiceRoleCC084440
-          - Arn
-      Runtime: nodejs10.x
-      Environment:
-        Variables:
-          TABLE_NAME:
-            Ref: items07D08F4B
-          PRIMARY_KEY: itemId
-    DependsOn:
-      - getAllItemsFunctionServiceRoleDefaultPolicyF069C759
-      - getAllItemsFunctionServiceRoleCC084440
-    Metadata:
-      aws:cdk:path: AwsCdkServerlessCrudStack/getAllItemsFunction/Resource
-      aws:asset:path: asset.2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cb.zip
-      aws:asset:property: Code
   createItemFunctionServiceRole1BBF2178:
     Type: AWS::IAM::Role
     Properties:
@@ -265,6 +99,172 @@ Resources:
       aws:cdk:path: AwsCdkServerlessCrudStack/createItemFunction/Resource
       aws:asset:path: asset.0ed5198b313f8d52b731494928a3951ad9a4ca6683a4efca2b547e92ddba9b85.zip
       aws:asset:property: Code
+  getOneItemFunctionServiceRoleCFD54796:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - Fn::Join:
+            - ""
+            - - "arn:"
+              - Ref: AWS::Partition
+              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+    Metadata:
+      aws:cdk:path: AwsCdkServerlessCrudStack/getOneItemFunction/ServiceRole/Resource
+  getOneItemFunctionServiceRoleDefaultPolicy6B743AA8:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action:
+              - dynamodb:BatchGetItem
+              - dynamodb:GetRecords
+              - dynamodb:GetShardIterator
+              - dynamodb:Query
+              - dynamodb:GetItem
+              - dynamodb:Scan
+              - dynamodb:BatchWriteItem
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+            Effect: Allow
+            Resource:
+              - Fn::GetAtt:
+                  - items07D08F4B
+                  - Arn
+              - Ref: AWS::NoValue
+        Version: "2012-10-17"
+      PolicyName: getOneItemFunctionServiceRoleDefaultPolicy6B743AA8
+      Roles:
+        - Ref: getOneItemFunctionServiceRoleCFD54796
+    Metadata:
+      aws:cdk:path: AwsCdkServerlessCrudStack/getOneItemFunction/ServiceRole/DefaultPolicy/Resource
+  getOneItemFunctionE3257B22:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParametersfbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031S3Bucket14FCE87B
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParametersfbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031S3VersionKeyB16DCD1A
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParametersfbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031S3VersionKeyB16DCD1A
+      Handler: get-one.handler
+      Role:
+        Fn::GetAtt:
+          - getOneItemFunctionServiceRoleCFD54796
+          - Arn
+      Runtime: nodejs10.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: items07D08F4B
+          PRIMARY_KEY: itemId
+    DependsOn:
+      - getOneItemFunctionServiceRoleDefaultPolicy6B743AA8
+      - getOneItemFunctionServiceRoleCFD54796
+    Metadata:
+      aws:cdk:path: AwsCdkServerlessCrudStack/getOneItemFunction/Resource
+      aws:asset:path: asset.fbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031.zip
+      aws:asset:property: Code
+  getAllItemsFunctionServiceRoleCC084440:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - Fn::Join:
+            - ""
+            - - "arn:"
+              - Ref: AWS::Partition
+              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+    Metadata:
+      aws:cdk:path: AwsCdkServerlessCrudStack/getAllItemsFunction/ServiceRole/Resource
+  getAllItemsFunctionServiceRoleDefaultPolicyF069C759:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action:
+              - dynamodb:BatchGetItem
+              - dynamodb:GetRecords
+              - dynamodb:GetShardIterator
+              - dynamodb:Query
+              - dynamodb:GetItem
+              - dynamodb:Scan
+              - dynamodb:BatchWriteItem
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+            Effect: Allow
+            Resource:
+              - Fn::GetAtt:
+                  - items07D08F4B
+                  - Arn
+              - Ref: AWS::NoValue
+        Version: "2012-10-17"
+      PolicyName: getAllItemsFunctionServiceRoleDefaultPolicyF069C759
+      Roles:
+        - Ref: getAllItemsFunctionServiceRoleCC084440
+    Metadata:
+      aws:cdk:path: AwsCdkServerlessCrudStack/getAllItemsFunction/ServiceRole/DefaultPolicy/Resource
+  getAllItemsFunction0B7A913E:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParameterse5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5S3Bucket3D7CCA25
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameterse5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5S3VersionKeyA8839728
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameterse5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5S3VersionKeyA8839728
+      Handler: get-all.handler
+      Role:
+        Fn::GetAtt:
+          - getAllItemsFunctionServiceRoleCC084440
+          - Arn
+      Runtime: nodejs10.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: items07D08F4B
+          PRIMARY_KEY: itemId
+    DependsOn:
+      - getAllItemsFunctionServiceRoleDefaultPolicyF069C759
+      - getAllItemsFunctionServiceRoleCC084440
+    Metadata:
+      aws:cdk:path: AwsCdkServerlessCrudStack/getAllItemsFunction/Resource
+      aws:asset:path: asset.e5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5.zip
+      aws:asset:property: Code
   updateItemFunctionServiceRole40035396:
     Type: AWS::IAM::Role
     Properties:
@@ -316,7 +316,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3Bucket78B892AE
+          Ref: AssetParameters8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efbS3Bucket8827B9B3
         S3Key:
           Fn::Join:
             - ""
@@ -324,13 +324,13 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
+                      - Ref: AssetParameters8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efbS3VersionKey7E8220B6
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
-      Handler: Lambda.update-one.update-one.handler
+                      - Ref: AssetParameters8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efbS3VersionKey7E8220B6
+      Handler: update-one.handler
       Role:
         Fn::GetAtt:
           - updateItemFunctionServiceRole40035396
@@ -346,7 +346,7 @@ Resources:
       - updateItemFunctionServiceRole40035396
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/updateItemFunction/Resource
-      aws:asset:path: asset.2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cb.zip
+      aws:asset:path: asset.8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efb.zip
       aws:asset:property: Code
   deleteItemFunctionServiceRole5C201FCC:
     Type: AWS::IAM::Role
@@ -399,7 +399,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3Bucket78B892AE
+          Ref: AssetParameters1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7S3BucketE1EDB5C5
         S3Key:
           Fn::Join:
             - ""
@@ -407,13 +407,13 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
+                      - Ref: AssetParameters1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7S3VersionKey2FC1B6BE
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F
-      Handler: Lambda.delete.delete-one.handler
+                      - Ref: AssetParameters1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7S3VersionKey2FC1B6BE
+      Handler: delete-one.handler
       Role:
         Fn::GetAtt:
           - deleteItemFunctionServiceRole5C201FCC
@@ -429,7 +429,7 @@ Resources:
       - deleteItemFunctionServiceRole5C201FCC
     Metadata:
       aws:cdk:path: AwsCdkServerlessCrudStack/deleteItemFunction/Resource
-      aws:asset:path: asset.2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cb.zip
+      aws:asset:path: asset.1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7.zip
       aws:asset:property: Code
   itemsApi28111E1C:
     Type: AWS::ApiGateway::RestApi
@@ -890,15 +890,6 @@ Resources:
       Modules: aws-cdk=1.63.0,@aws-cdk/assets=1.63.0,@aws-cdk/aws-apigateway=1.63.0,@aws-cdk/aws-applicationautoscaling=1.63.0,@aws-cdk/aws-autoscaling-common=1.63.0,@aws-cdk/aws-cloudwatch=1.63.0,@aws-cdk/aws-codeguruprofiler=1.63.0,@aws-cdk/aws-dynamodb=1.63.0,@aws-cdk/aws-ec2=1.63.0,@aws-cdk/aws-events=1.63.0,@aws-cdk/aws-iam=1.63.0,@aws-cdk/aws-kms=1.63.0,@aws-cdk/aws-lambda=1.63.0,@aws-cdk/aws-logs=1.63.0,@aws-cdk/aws-s3=1.63.0,@aws-cdk/aws-s3-assets=1.63.0,@aws-cdk/aws-sqs=1.63.0,@aws-cdk/aws-ssm=1.63.0,@aws-cdk/cloud-assembly-schema=1.63.0,@aws-cdk/core=1.63.0,@aws-cdk/custom-resources=1.63.0,@aws-cdk/cx-api=1.63.0,@aws-cdk/region-info=1.63.0,jsii-runtime=node.js/v12.15.0
     Condition: CDKMetadataAvailable
 Parameters:
-  AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3Bucket78B892AE:
-    Type: String
-    Description: S3 bucket for asset "2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cb"
-  AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbS3VersionKeyA743EF2F:
-    Type: String
-    Description: S3 key for asset version "2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cb"
-  AssetParameters2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cbArtifactHash91B7CEFE:
-    Type: String
-    Description: Artifact hash for asset "2ff56a7cd94795e4905a073a92f2ba6796149d1572f93bcc38800c0a5d60e2cb"
   AssetParameters0ed5198b313f8d52b731494928a3951ad9a4ca6683a4efca2b547e92ddba9b85S3Bucket52FEFFBC:
     Type: String
     Description: S3 bucket for asset "0ed5198b313f8d52b731494928a3951ad9a4ca6683a4efca2b547e92ddba9b85"
@@ -908,6 +899,42 @@ Parameters:
   AssetParameters0ed5198b313f8d52b731494928a3951ad9a4ca6683a4efca2b547e92ddba9b85ArtifactHashA44C843C:
     Type: String
     Description: Artifact hash for asset "0ed5198b313f8d52b731494928a3951ad9a4ca6683a4efca2b547e92ddba9b85"
+  AssetParametersfbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031S3Bucket14FCE87B:
+    Type: String
+    Description: S3 bucket for asset "fbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031"
+  AssetParametersfbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031S3VersionKeyB16DCD1A:
+    Type: String
+    Description: S3 key for asset version "fbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031"
+  AssetParametersfbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031ArtifactHash85640AB7:
+    Type: String
+    Description: Artifact hash for asset "fbe8192f29b8ae4fbf9c4cb834c7b410dc94dc3d79370a5c6a3ca829a1437031"
+  AssetParameterse5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5S3Bucket3D7CCA25:
+    Type: String
+    Description: S3 bucket for asset "e5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5"
+  AssetParameterse5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5S3VersionKeyA8839728:
+    Type: String
+    Description: S3 key for asset version "e5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5"
+  AssetParameterse5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5ArtifactHash72F84C41:
+    Type: String
+    Description: Artifact hash for asset "e5d65889d43dcc164cdd03b394964fd2dcecea9bf10e8c2a53232ad417f90fa5"
+  AssetParameters8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efbS3Bucket8827B9B3:
+    Type: String
+    Description: S3 bucket for asset "8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efb"
+  AssetParameters8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efbS3VersionKey7E8220B6:
+    Type: String
+    Description: S3 key for asset version "8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efb"
+  AssetParameters8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efbArtifactHash09F798A7:
+    Type: String
+    Description: Artifact hash for asset "8c50a0d1c0f672eaccdaf2b710765b7a6a446cb993fad10dfa9c09d7bbd26efb"
+  AssetParameters1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7S3BucketE1EDB5C5:
+    Type: String
+    Description: S3 bucket for asset "1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7"
+  AssetParameters1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7S3VersionKey2FC1B6BE:
+    Type: String
+    Description: S3 key for asset version "1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7"
+  AssetParameters1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7ArtifactHash1D355E75:
+    Type: String
+    Description: Artifact hash for asset "1332ae01f04a3d76e43c1ce8b2936abd15273bc63733a6e654a910b7fb7447f7"
 Outputs:
   itemsApiEndpoint8392E274:
     Value:
