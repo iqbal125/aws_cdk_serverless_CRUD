@@ -49,7 +49,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
     //})
 
     const createOne = new lambda.Function(this, "createItemFunction", {
-      code: lambda.Code.fromAsset("create3.zip"),
+      code: lambda.Code.fromAsset("LambdaBuilt/create.zip"),
       handler: "create.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
