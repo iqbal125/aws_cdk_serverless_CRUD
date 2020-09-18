@@ -50,7 +50,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
 
     const createOne = new lambda.Function(this, "createItemFunction", {
       code: lambda.Code.fromAsset("create3.zip"),
-      handler: "create3.index.handler",
+      handler: "create.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
