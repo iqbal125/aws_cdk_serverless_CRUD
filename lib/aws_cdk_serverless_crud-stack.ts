@@ -34,7 +34,6 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
-        PRIMARY_KEY: "itemId",
       },
     })
 
@@ -44,7 +43,6 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
-        PRIMARY_KEY: "itemId",
       },
     })
 
@@ -54,7 +52,6 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
-        PRIMARY_KEY: "itemId",
       },
     })
 
@@ -64,7 +61,6 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
-        PRIMARY_KEY: "itemId",
       },
     })
 
@@ -74,7 +70,6 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_10_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
-        PRIMARY_KEY: "itemId",
       },
     })
 
