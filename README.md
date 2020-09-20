@@ -17,6 +17,10 @@ Use any zipping tool, but you will need to add the zipped files to the LambdaBui
 
 Note: functions without 3rd party libraries dont need to be zipped.
 
+Installing 3rd Party Libraries to a Lambda Function
+
+You will need to install the required node modules inside the directory on each function and zip the modules and function together to deploy.
+
 Local Testing Lambda
 
 note: you will need the sam cli installed to test lambda locally.
