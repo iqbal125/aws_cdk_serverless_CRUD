@@ -39,7 +39,7 @@ https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/s
 3. Test the lambda
 `sam local invoke funtionName123`
 
-4. You can also start a local api server with and test with a tool like Postman
+4. You can also start a local api server and test with a tool like Postman
 `sam local start-api`
 
 <br>
