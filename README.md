@@ -20,13 +20,13 @@ note: you will need the sam cli installed to test lambda locally.
 
 https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
 
-1. Output a template.yaml file with the command
+Output a template.yaml file with the command
 
 `cdk synth > template.yaml`
 
-2. Move the template.yaml file from root to cdk.out folder
+Move the template.yaml file from root to cdk.out folder
 
-3. test the lambda
+Test the lambda
 
 `sam local invoke funtionName123`
 
