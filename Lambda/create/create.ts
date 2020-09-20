@@ -8,7 +8,7 @@ export const handler = async (event: any = {}): Promise<any> => {
   }
 
   //item: {todo_id: '', title: ''}
-  const item = {itemId: uuidv4(), todos: [...event.body]}
+  const item = {itemId: uuidv4(), todos: [event.body]}
 
   const params = {
     TableName: process.env.TABLE_NAME || "",

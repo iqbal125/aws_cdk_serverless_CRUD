@@ -7,7 +7,7 @@ export const handler = async (event: any = {}): Promise<any> => {
   }
   const editedItemId = event.pathParameters.id
 
-  const editedItem: any = {todos: [JSON.parse(event.body)]}
+  const editedItem: any = {todos: [event.body]}
 
   const params: any = {
     TableName: process.env.TABLE_NAME,
