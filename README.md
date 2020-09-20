@@ -1,6 +1,6 @@
 # Api Gateway, Lambda and DynamoDB Serverless App
 
-A serverless CRUD app built using aws-cdk.
+A serverless CRUD app built using aws-cdk. Lambda functions can optionally have 3rd party libraries installed.
 
 <br>
 <br>
