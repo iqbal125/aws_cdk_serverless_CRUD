@@ -15,7 +15,7 @@ export class AwsCdkServerlessCrudStack extends cdk.Stack {
         type: dynamodb.AttributeType.STRING,
       },
       tableName: "items",
-      removalPolicy: cdk.RemovalPolicy.DESTROY, // NOT recommended for production code
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
     })
 
     //const createOne = new lambdaNode.NodejsFunction(this, "createItemFunction", {
