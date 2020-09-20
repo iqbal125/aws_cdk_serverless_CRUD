@@ -1,4 +1,9 @@
+# Api Gateway, Lambda and DynamoDB Serverless App
 
+A serverless CRUD app built using aws-cdk.
+
+<br>
+<br>
 
 ## Building Lambda
 
@@ -10,9 +15,15 @@ Use any zipping tool, but you will need to add the zipped files to the LambdaBui
 
 Note: functions without 3rd party libraries dont need to be zipped.
 
+<br>
+<br>
+
 ## Installing 3rd Party Libraries to a Lambda Function
 
 You will need to install the required node modules inside the directory on each function and zip the modules and function together to deploy.
+
+<br>
+<br>
 
 ## Local Testing Lambda
 
@@ -34,6 +45,8 @@ You can also start a local api server with and test with a tool like Postman
 
 `sam local start-api`
 
+<br>
+<br>
 
 ## Useful commands
 
